@@ -1,0 +1,61 @@
+.job-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #272727;
+  color: aliceblue;
+  font-family: Roboto;
+  height: auto;
+  flex-direction: column;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* justify-content: center; */
+  top: 0;
+  /* align-items: center; */
+  position: sticky;
+}
+.card {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  min-height: 35vh;
+  max-height: 37vh;
+  border-radius: 14px;
+  padding: 10px 25px;
+  color: black;
+}
+.job-seach-input {
+  padding: 10px 26px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  width: 90%;
+  border-radius: 8px;
+}
+.empolyment-section,
+.salary-section {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+}
+.inputs {
+  padding: 8px;
+}
+.labels {
+  font-size: 17px;
+  font-weight: 400;
+}
+.sub-heading {
+  font-size: 21px;
+}
+.employment-list-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}

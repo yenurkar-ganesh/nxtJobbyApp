@@ -1,0 +1,43 @@
+.nav-header {
+  width: 99%;
+  background-color: rgb(203, 213, 225, 0.83);
+  border-radius: 8px;
+  padding: 10px 26px;
+  position: sticky;
+  top: 0;
+  margin: 4px;
+}
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+}
+.website-logo {
+  width: 120px;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-menu-item,
+.nav-link {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  font-weight: 600;
+}
+.logout-btn {
+  color: aliceblue;
+  background-color: #4f46e5;
+  font-weight: 500;
+  border-radius: 7px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 26px;
+  border: none;
+}
+.logout-btn:hover {
+  transform: scale(1.03);
+}

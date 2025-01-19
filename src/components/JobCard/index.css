@@ -1,0 +1,30 @@
+.company-logo {
+  width: 50px;
+}
+.job-title,
+.job-rating {
+  color: black;
+}
+.icon-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.job-details-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.location-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+.line {
+  background-color: black;
+  color: black;
+}
+.job-desc {
+  color: black;
+}
