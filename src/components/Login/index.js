@@ -78,7 +78,6 @@ class Login extends Component {
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             alt="website logo"
           />
-          <h1 className="main-heading">Find The Job That Fits Your Life</h1>
           <div className="input-section">
             <label className="labels" htmlFor="username">
               USERNAME

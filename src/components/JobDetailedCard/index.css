@@ -1,7 +1,42 @@
+.detailed-job-page {
+  background-color: #272727;
+}
+.card-footer h1 {
+  font-size: 21px;
+}
+.skills-section {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: space-between;
+}
+.job-life-section {
+  display: flex;
+}
+.life-desc {
+  width: 45%;
+}
+.skills {
+  list-style: none;
+  text-align: center;
+}
+.skill-logo {
+  width: 75px;
+}
 .job-details-container {
   width: 70%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
-
+.job-meta,
+.item-header-section {
+  width: 100%;
+}
+.card-img {
+  width: 120px;
+}
 .job-details-section {
   width: 100%;
   color: aliceblue;
@@ -42,4 +77,14 @@
 }
 .desc-img {
   width: 70%;
+}
+.similar-jobs-container {
+  width: 70%;
+  margin: 0px auto;
+  color: aliceblue;
+}
+.similar-job-card-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }

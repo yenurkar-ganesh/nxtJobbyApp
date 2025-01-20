@@ -1,0 +1,31 @@
+.similar-job-card {
+  list-style: none;
+  width: 410px;
+  position: relative;
+}
+
+.similar-card-img {
+  width: 55px;
+}
+.similar-job-card h1 {
+  font-size: 21px;
+  margin: 0;
+  padding: 0;
+}
+.desc {
+  font-size: 18px;
+}
+.card-header {
+  display: flex;
+  gap: 10px;
+}
+.card-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.job-type {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}

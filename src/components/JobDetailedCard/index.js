@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
+import SimilarJobCard from '../SimilarJobCard'
 import './index.css'
 import {MdLocationOn} from 'react-icons/md'
 import {MdWork} from 'react-icons/md'
@@ -66,63 +67,68 @@ const JobDetailedCard = props => {
   const {job_details: jobDetailsData, similar_jobs: similarJobs} = jobDetails
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="detailed-job-page d-flex flex-column align-items-center">
       <Header />
       <div className="job-details-container bg-light p-3 shadow rounded">
-        <div className="d-flex align-items-center">
+        <div className="item-header-section d-flex align-items-center">
           <img
-            className="logo"
+            className="card-img"
             src={jobDetailsData.company_logo_url}
             alt="job details company logo"
           />
-          <div>
+          <div className="header-section-meta">
             <h1>{jobDetailsData.title}</h1>
-            <p>⭐ {jobDetailsData.rating}</p>
+            <div className="meta-items-section">
+              <p>⭐ {jobDetailsData.rating}</p>
+              <p>|</p>
+              <p>
+                <MdLocationOn /> {jobDetailsData.location}
+              </p>
+            </div>
+            <div className="job-meta d-flex justify-content-between align-items-center">
+              <div>
+                <p>
+                  <MdWork /> {jobDetailsData.employment_type}
+                </p>
+              </div>
+              <p>{jobDetailsData.package_per_annum}</p>
+            </div>
           </div>
         </div>
-        <div className="d-flex justify-content-between">
-          <div>
-            <p>
-              <MdLocationOn /> {jobDetailsData.location}
+        <hr className="hr-line" />
+        <div className="card-footer d-flex flex-column">
+          <h1>Description</h1>
+          <p>{jobDetailsData.job_description}</p>
+          <h1>Skills</h1>
+          <ul className="skills-section">
+            {jobDetailsData.skills.map(skill => (
+              <li className="skills" key={skill.name}>
+                <img
+                  className="skill-logo"
+                  src={skill.image_url}
+                  alt={skill.name}
+                />
+                <p>{skill.name}</p>
+              </li>
+            ))}
+          </ul>
+          <h1>Life at Company</h1>
+          <div className="job-life-section">
+            <p className="life-desc">
+              {jobDetailsData.life_at_company.description}
             </p>
-            <p>
-              <MdWork /> {jobDetailsData.employment_type}
-            </p>
+            <img
+              src={jobDetailsData.life_at_company.image_url}
+              alt="life at company"
+            />
           </div>
-          <p>{jobDetailsData.package_per_annum}</p>
-        </div>
-        <h1>Description</h1>
-        <p>{jobDetailsData.job_description}</p>
-        <h1>Skills</h1>
-        <ul>
-          {jobDetailsData.skills.map(skill => (
-            <li key={skill.name}>
-              <img src={skill.image_url} alt={skill.name} />
-              <p>{skill.name}</p>
-            </li>
-          ))}
-        </ul>
-        <h1>Life at Company</h1>
-        <div>
-          <p>{jobDetailsData.life_at_company.description}</p>
-          <img
-            src={jobDetailsData.life_at_company.image_url}
-            alt="life at company"
-          />
         </div>
       </div>
       <div className="similar-jobs-container">
         <h1>Similar Jobs</h1>
-        <ul>
+        <ul className="similar-job-card-section">
           {similarJobs.map(job => (
-            <li key={job.id} className="similar-job-item">
-              <img src={job.company_logo_url} alt="similar job company logo" />
-              <h1>{job.title}</h1>
-              <p>⭐ {job.rating}</p>
-              <p>{job.location}</p>
-              <p>{job.employment_type}</p>
-              <p>{job.job_description}</p>
-            </li>
+            <SimilarJobCard key={job.id} job={job} />
           ))}
         </ul>
       </div>

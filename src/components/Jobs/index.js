@@ -44,6 +44,29 @@ const salaryRangesList = [
   },
 ]
 
+const locationLilst = [
+  {
+    locationId: 1,
+    location: ' Hyderabad',
+  },
+  {
+    locationId: 2,
+    location: ' Bangalore',
+  },
+  {
+    locationId: 3,
+    location: 'Chennai,',
+  },
+  {
+    locationId: 4,
+    location: ' Delhi',
+  },
+  {
+    locationId: 5,
+    location: 'Mumbai',
+  },
+]
+
 const Jobs = () => {
   const [profile, setProfile] = useState({})
   const [jobs, setJobs] = useState([])
@@ -51,7 +74,7 @@ const Jobs = () => {
   const [searchInput, setSearchInput] = useState('')
   const [employmentTypes, setEmploymentTypes] = useState([])
   const [salaryRange, setSalaryRange] = useState('')
-  const [apiStatus, setApiStatus] = useState('SUCCESS') // SUCCESS | FAILURE | NO_DATA
+  const [apiStatus, setApiStatus] = useState('SUCCESS')
   const history = useHistory()
 
   const token = Cookies.get('jwt_token')
@@ -147,7 +170,7 @@ const Jobs = () => {
   const renderJobs = () => {
     if (apiStatus === 'NO_DATA') {
       return (
-        <div className="no-jobs-view">
+        <div className="no-jobs-view text-white">
           <img src="No Jobs view image URL" alt="no jobs" />
           <h1>No Jobs Found</h1>
           <p>We could not find any jobs. Try other filters</p>
@@ -161,14 +184,28 @@ const Jobs = () => {
           <li
             key={job.id}
             onClick={() => navigateToJobDetails(job.id)}
-            className="job-item"
+            className="job-item bg-light p-3 d-flex flex-column shadow rounded mb-4 text-black"
           >
-            <img src={job.companyLogoUrl} alt="company logo" />
-            <h1>{job.title}</h1>
-            <p>{job.rating}</p>
-            <p>{job.location}</p>
-            <p>{job.employmentType}</p>
-            <h1>Description</h1>
+            <div className="item-header-section">
+              <img
+                className="card-img"
+                src={job.companyLogoUrl}
+                alt="company logo"
+              />
+              <div className="header-section-meta">
+                <h1>{job.title}</h1>
+                <div className="meta-items-section">
+                  <p>⭐ {job.rating}</p>
+                  <p> |</p>
+                  <p>{job.location}</p>
+                </div>
+              </div>
+            </div>
+            <hr className="hr-line" />
+            <div className="card-footer-section">
+              <h1>Description</h1>
+              <p>{job.employmentType}</p>
+            </div>
             <p>{job.jobDescription}</p>
           </li>
         ))}
@@ -177,7 +214,7 @@ const Jobs = () => {
   }
 
   const renderFailureView = () => (
-    <div className="failure-view">
+    <div className="failure-view text-white">
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
@@ -206,8 +243,8 @@ const Jobs = () => {
       <Header onClick={() => history.push('/')} />
       <div className="container mt-4">
         <div className="row gap-10px">
-          <div className="card-container col-md-3">
-            <div className="card bg-light p-3 shadow-rounded">
+          <div className=" card-container col-md-3">
+            <div className="user-card card bg-light p-3 shadow-rounded">
               <img
                 className="profile-logo"
                 src={profile.profile_image_url}
@@ -218,17 +255,22 @@ const Jobs = () => {
                 <p>{profile.short_bio}</p>
               </div>
             </div>
-            <div>
+            <div className="filter-container">
               <h3 className="sub-heading">Type of Employment</h3>
               <ul className="employment-section">
                 {employmentTypesList.map(eachType => (
-                  <li key={eachType.employmentTypeId}>
+                  <li className="filter-item" key={eachType.employmentTypeId}>
                     <input
                       type="checkbox"
+                      className="filter-item-input"
+                      size={50}
                       id={eachType.employmentTypeId}
                       onChange={handleEmploymentTypeChange}
                     />
-                    <label htmlFor={eachType.employmentTypeId}>
+                    <label
+                      className="filter-item-label"
+                      htmlFor={eachType.employmentTypeId}
+                    >
                       {eachType.label}
                     </label>
                   </li>
@@ -237,10 +279,11 @@ const Jobs = () => {
               <h3 className="sub-heading">Salary Range</h3>
               <ul className="salary-section">
                 {salaryRangesList.map(eachSalary => (
-                  <li key={eachSalary.salaryRangeId}>
+                  <li className="filter-item" key={eachSalary.salaryRangeId}>
                     <input
                       type="radio"
                       name="salary"
+                      className="filter-item-input"
                       id={eachSalary.salaryRangeId}
                       onChange={handleSalaryRangeChange}
                     />
@@ -255,6 +298,7 @@ const Jobs = () => {
           <div className="col-md-9">
             <div className="search-container">
               <input
+                className="job-seach-input"
                 type="search"
                 placeholder="Search"
                 value={searchInput}
@@ -263,6 +307,7 @@ const Jobs = () => {
               <button
                 type="button"
                 data-testid="searchButton"
+                className="searchBtn"
                 onClick={handleSearch}
               >
                 <BsSearch />

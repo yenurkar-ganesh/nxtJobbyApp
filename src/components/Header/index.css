@@ -1,3 +1,9 @@
+.navbar {
+  width: 100%;
+  top: 0px;
+  position: sticky;
+}
+
 .nav-header {
   width: 99%;
   background-color: rgb(203, 213, 225, 0.83);
@@ -5,7 +11,7 @@
   padding: 10px 26px;
   position: sticky;
   top: 0;
-  margin: 4px;
+  margin: 4px auto;
 }
 .nav-content {
   display: flex;
@@ -27,6 +33,11 @@
   list-style: none;
   color: black;
   font-weight: 600;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 .logout-btn {
   color: aliceblue;

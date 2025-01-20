@@ -18,7 +18,8 @@
   margin: 5rem;
 }
 .home-heading {
-  font-size: 48px;
+  font-family: 'Termina Test', sans-serif;
+  font-size: 56px;
   font-weight: 500;
 }
 .home-description {

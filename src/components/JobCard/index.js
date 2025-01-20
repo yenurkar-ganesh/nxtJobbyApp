@@ -19,7 +19,7 @@ const JobCard = ({eachJob}) => {
     <Link className="text-decoration-none" to={`/jobs/${id}`}>
       <li
         key={id}
-        className="bg-light p-3 d-flex flex-column shadow rounded mb-4"
+        className="job-card bg-light p-3 d-flex flex-column shadow rounded mb-4 text-black"
       >
         <div className="d-flex flex-row align-items-center mb-3">
           <img

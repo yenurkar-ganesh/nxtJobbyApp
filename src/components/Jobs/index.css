@@ -17,7 +17,7 @@
   /* align-items: center; */
   position: sticky;
 }
-.card {
+.user-card {
   background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,20 +28,47 @@
   padding: 10px 25px;
   color: black;
 }
+.profile-logo {
+  width: 120px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0px auto;
+  margin-bottom: 2.5rem;
+}
 .job-seach-input {
   padding: 10px 26px;
   font-size: 15px;
   outline: none;
   border: none;
-  width: 90%;
+  width: 80%;
+  border-radius: 8px;
+}
+.searchBtn {
+  padding: 10px 26px;
+  font-size: 15px;
+  outline: none;
+  border: none;
   border-radius: 8px;
 }
 .empolyment-section,
 .salary-section {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
+}
+.filer-section h3 {
+  font-size: 20px;
+}
+.filter-item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-item-input {
+  padding: 18px;
 }
 .inputs {
   padding: 8px;
@@ -58,4 +85,38 @@
   align-items: center;
   gap: 18px;
   width: 100%;
+}
+.card-img {
+  width: 80px;
+}
+.job-card {
+  color: black;
+}
+.job-item {
+  cursor: pointer;
+}
+.item-header-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item-header-section h1 {
+  font-size: 25px;
+}
+.meta-items-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-footer-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-footer-section h1 {
+  font-size: 20px;
+}
+.hr-line {
+  color: black;
+  background-color: #272727;
 }

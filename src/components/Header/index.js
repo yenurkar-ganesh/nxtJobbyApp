@@ -27,10 +27,10 @@ const Header = () => {
         <Link to="/jobs" className="text-white text-decoration-none">
           Jobs
         </Link>
+        <button type="button" className="btn btn-light" onClick={handleLogout}>
+          Logout
+        </button>
       </ul>
-      <button type="button" className="btn btn-light" onClick={handleLogout}>
-        Logout
-      </button>
     </nav>
   )
 }
