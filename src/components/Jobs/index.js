@@ -44,22 +44,22 @@ const salaryRangesList = [
   },
 ]
 
-const locationLilst = [
+const locationList = [
   {
     locationId: 1,
-    location: ' Hyderabad',
+    location: 'Hyderabad',
   },
   {
     locationId: 2,
-    location: ' Bangalore',
+    location: 'Bangalore',
   },
   {
     locationId: 3,
-    location: 'Chennai,',
+    location: 'Chennai',
   },
   {
     locationId: 4,
-    location: ' Delhi',
+    location: 'Delhi',
   },
   {
     locationId: 5,
@@ -74,6 +74,7 @@ const Jobs = () => {
   const [searchInput, setSearchInput] = useState('')
   const [employmentTypes, setEmploymentTypes] = useState([])
   const [salaryRange, setSalaryRange] = useState('')
+  const [locationType, setLocationType] = useState([])
   const [apiStatus, setApiStatus] = useState('SUCCESS')
   const history = useHistory()
 
@@ -100,7 +101,8 @@ const Jobs = () => {
   const fetchJobs = async () => {
     setIsLoading(true)
     const employmentTypeParam = employmentTypes.join(',')
-    const url = `https://apis.ccbp.in/jobs?search=${searchInput}&employment_type=${employmentTypeParam}&minimum_package=${salaryRange}`
+    const locationParam = locationType.join(',')
+    const url = `https://apis.ccbp.in/jobs?search=${searchInput}&employment_type=${employmentTypeParam}&minimum_package=${salaryRange}&location=${locationParam}`
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -139,7 +141,7 @@ const Jobs = () => {
   useEffect(() => {
     fetchProfileDetails()
     fetchJobs()
-  }, [])
+  }, [employmentTypes, salaryRange, locationType, searchInput])
 
   const handleSearch = () => {
     fetchJobs()
@@ -158,6 +160,17 @@ const Jobs = () => {
     setSalaryRange(event.target.id)
   }
 
+  const handleLocationHandler = ev => {
+    const {id, checked} = ev.target
+    if (checked) {
+      setLocationType(prevLocations => [...prevLocations, id])
+    } else {
+      setLocationType(prevLocations =>
+        prevLocations.filter(location => location !== id),
+      )
+    }
+  }
+
   const retryFetch = () => {
     fetchProfileDetails()
     fetchJobs()
@@ -171,7 +184,10 @@ const Jobs = () => {
     if (apiStatus === 'NO_DATA') {
       return (
         <div className="no-jobs-view text-white">
-          <img src="No Jobs view image URL" alt="no jobs" />
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+            alt="no jobs"
+          />
           <h1>No Jobs Found</h1>
           <p>We could not find any jobs. Try other filters</p>
         </div>
@@ -243,11 +259,14 @@ const Jobs = () => {
       <Header onClick={() => history.push('/')} />
       <div className="container mt-4">
         <div className="row gap-10px">
-          <div className=" card-container col-md-3">
+          <div className="col-md-3 sticky-sidebar">
             <div className="user-card card bg-light p-3 shadow-rounded">
               <img
                 className="profile-logo"
-                src={profile.profile_image_url}
+                src={
+                  profile.profile_image_url ||
+                  'https://assets.ccbp.in/frontend/react-js/male-avatar-img.png'
+                }
                 alt="profile"
               />
               <div className="profile-desc p-3">
@@ -289,6 +308,22 @@ const Jobs = () => {
                     />
                     <label htmlFor={eachSalary.salaryRangeId}>
                       {eachSalary.label}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              <h3>Location</h3>
+              <ul className="salary-section">
+                {locationList.map(eachLocation => (
+                  <li className="filter-item" key={eachLocation.locationId}>
+                    <input
+                      type="checkbox"
+                      className="filter-item-input"
+                      id={eachLocation.locationId}
+                      onChange={handleLocationHandler}
+                    />
+                    <label htmlFor={eachLocation.locationId}>
+                      {eachLocation.location}
                     </label>
                   </li>
                 ))}
